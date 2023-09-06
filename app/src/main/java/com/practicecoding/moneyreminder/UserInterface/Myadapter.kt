@@ -2,7 +2,6 @@ package com.practicecoding.moneyreminder.UserInterface
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -17,13 +16,14 @@ class Myadapter(val context: Context,
 
     inner class Myviewholder(val binding: CardItemBinding): RecyclerView.ViewHolder(binding.root)
     {
-fun bind(note:Note,position:Int)
+fun bind(note: Note)
 {
-  binding.username.setText(allNotes.get(position).name)
-    binding.usertime.setText("Last Updated : " + allNotes.get(position).timestamp)
-    binding.useramount.setText(allNotes.get(position).amount)
+    binding.username.text=note.name
+    val str = note.timestamp
+    binding.usertime.text = "Last Updated : $str "
+    binding.useramount.text = note.amount
     binding.delete.setOnClickListener(){
-        noteClickDeleteInterface.onDeleteIconClick(allNotes.get(position))}
+        noteClickDeleteInterface.onDeleteIconClick(note)}
 
 }}
         fun updatelist(newlist:List<Note>){
@@ -45,7 +45,7 @@ fun bind(note:Note,position:Int)
 return allNotes.size   }
 
     override fun onBindViewHolder(holder: Myviewholder, position: Int) {
-holder.bind(allNotes[position] ,position)    }
+holder.bind(allNotes[position] )    }
 }
 interface NoteClickDeleteInterface {
     fun onDeleteIconClick(note: Note)

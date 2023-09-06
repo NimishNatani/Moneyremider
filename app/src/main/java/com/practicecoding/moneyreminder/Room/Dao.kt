@@ -10,11 +10,11 @@ import androidx.room.Update
 @Dao
 interface Dao {
     @Insert
-    suspend fun insert(note:Note):String
+    suspend fun insert(note:Note):Long
     @Delete
-    suspend fun delete(note: Note):String
+    suspend fun delete(note: Note)
     @Update
-    suspend fun update(note: Note):String
+    suspend fun update(note: Note)
 //    @Query("DELETE FROM Notestable")
 //    suspend fun deleteAll()
 
